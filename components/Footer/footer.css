@@ -1,0 +1,34 @@
+footer {
+    background-color: var(--caramel);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+footer nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 0 20%;
+}
+footer ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+footer li {
+    margin: 10px 0;
+}
+footer a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}

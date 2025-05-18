@@ -1,0 +1,98 @@
+@import '/components/Header/header.css';
+@import '/components/Footer/footer.css';
+@import '/components/Post/post.css';
+:root { 
+    --coffee-dark: #4B2E2B; 
+    --cream: #F3E9DC; 
+    --tea-green: #8A9A5B; 
+    --caramel: #C9A66B; 
+    --gray-text: #555555; 
+    --berry: #7B3F3F; 
+    --deep-green: #46644C; 
+    --text-dark: #2B2B2B; 
+}
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+    color: #000;
+}
+
+body {
+    font-family: 'Noto Serif', serif;
+    margin: 0;
+    background: var(--cream);
+    color: var(--gray-text);
+  }
+  
+  .palette {
+    display: flex;
+    gap: 12px;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .color-box {
+    width: 120px;
+    height: 100px;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    padding: 6px;
+  }
+  
+  .coffee-dark { background: var(--coffee-dark); }
+  .cream { background: var(--cream); color: #2B2B2B; }
+  .tea-green { background: var(--tea-green); }
+  .caramel { background: var(--caramel); color: #2B2B2B; }
+  .gray-text { background: #555555; }
+  .berry { background: var(--berry); }
+  .deep-green { background: var(--deep-green); }
+  .text-dark { background: var(--text-dark); }
+  
+  .text-section {
+    padding: 40px;
+    margin: 20px 0;
+  }
+  
+  .bg-cream { background: var(--cream); }
+  .bg-coffee-dark { background: var(--coffee-dark); color: white; }
+  .bg-caramel { background: var(--caramel); }
+  
+  .h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+  }
+  
+  .h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: var(--coffee-dark);
+  }
+  
+  .body-text {
+    font-family: 'Noto Serif', serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .caption {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    opacity: 0.7;
+  }
