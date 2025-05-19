@@ -1,0 +1,30 @@
+<?php include_once __DIR__ . '/../../helpers.php'; ?>
+
+<div class="post-preview">
+    <div class="preview-header">
+        <img src="<?= $post_data['author_avatar'] ?>" alt="Author Avatar" class="preview-avatar">
+            <span class="preview-time"><?= htmlspecialchars(getRelativeTime($post_data['post_created_at'])) ?></span>
+            <span class="preview-author"><?= $post_data['author_name'] ?></span>
+    </div>
+    <h2 class="preview-title"><?= htmlspecialchars($post_data['post_title']) ?></h2>
+    <p class="preview-text">
+        <?= implode(' ', array_slice(explode(' ', strip_tags($post_data['post_text'])), 0, 10)) ?>...
+        <a href="post.php?id=<?= $post_data['id'] ?>" class="preview-read-more">Дивитись далі</a>
+    </p>
+
+    <div class="image-blur-wrapper">
+        <div class="image-blur-bg" style="background-image: url('<?= $post_data['post_image'] ?>');"></div>
+        <img src="<?= $post_data['post_image'] ?>" alt="Post Image" class="image-foreground">
+    </div>
+
+    <div class="preview-bottom">
+        <span class="post-category"><?= $post_data['post_category'] ?></span>
+        <div class="post-likes">
+            <?php foreach ($post_data['post_likes'] as $like_type => $like_count): ?>
+                <button class="like-button">
+                    <img class="like_icon" src="<?= $like_count[1]?>"></img> <?= $like_count[0] ?>
+                </button>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>

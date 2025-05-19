@@ -2,86 +2,199 @@
     display: flex;
     flex-direction: column;
     background-color: var(--cream);
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 16px;
-    width: 50%;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px auto;
+    border: 2px solid var(--berry);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .post-author-container {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
     align-items: center;
-    margin-bottom: 8px;
+    background-color: var(--tea-green);
+    border-radius: 12px;
+    padding: 16px;
 }
+
 .post-author-avatar-container {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 8px;
+    flex-shrink: 0;
 }
 .post-author-avatar {
-    width: 100%;
-    height: 100%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
     object-fit: cover;
+    border: 3px solid var(--caramel);
 }
+
 .post-author-info-container {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 4px;
 }
+
 .post-author-name {
-    font-size: 48px;
+    font-size: 1.8rem;
     font-weight: bold;
     color: var(--text-dark);
 }
-.post-author-date {
-    font-size: 24px;
-    color: var(--gray-text);
-}
-.post-author-role {
-    font-size: 24px;
+
+.post-author-date,
+.post-author-role,
+.post-author-carma {
+    font-size: 1rem;
     color: var(--gray-text);
 }
 .post-content-container {
-    margin-top: 16px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
+    gap: 12px;
 }
+
 .post-content-title {
-    font-size: 24px;
-    color: var(--text-dark);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--coffee-dark);
 }
+
 .post-content-text {
-    font-size: 16px;
+    font-size: 1.1rem;
     color: var(--gray-text);
+    line-height: 1.6;
 }
 .image-blur-wrapper {
     position: relative;
     width: 100%;
-    height: 300px;
-    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 12px;
+    aspect-ratio: 16 / 9;
 }
 
 .image-blur-bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background-size: cover;
     background-position: center;
-    filter: blur(16px) brightness(0.6); /* замилення + затемнення */
-    transform: scale(1.1); /* трохи збільшити, щоб blur не обрізався */
+    filter: blur(16px) brightness(0.6);
+    transform: scale(1.1);
     z-index: 1;
 }
+
 .image-foreground {
     position: relative;
     z-index: 2;
+    width: 100%;
     height: 100%;
-    margin: auto;
-    display: block;
     object-fit: contain;
     border-radius: 12px;
+}
+
+.post-info {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--deep-green);
+    border-top: 1px solid var(--caramel);
+    padding-top: 12px;
+}
+
+.post-category-container {
+    font-weight: bold;
+    color: var(--berry);
+}
+.post-likes {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 1rem;
+    color: var(--deep-green);
+}
+.like-button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--deep-green);
+    color: var(--cream);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.like-button:hover {
+    background-color: var(--berry);
+    transition: background-color 0.3s ease;
+}
+.like_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+}
+
+@media (max-width: 768px) {
+    .post-author-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post-author-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .post-content-title {
+        font-size: 1.3rem;
+    }
+
+    .post-content-text {
+        font-size: 1rem;
+    }
+
+    .post-author-name {
+        font-size: 1.5rem;
+    }
+
+    .post {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 560px) {
+    .post {
+        border-radius: 8px;
+    }
+
+    .post-author-avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .post-author-name {
+        font-size: 1.2rem;
+    }
+
+    .post-content-title {
+        font-size: 1.1rem;
+    }
+
+    .post-content-text {
+        font-size: 0.95rem;
+    }
+
+    .post-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

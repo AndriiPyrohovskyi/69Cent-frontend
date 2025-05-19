@@ -21,4 +21,5 @@ $title = $title ?? 'Default Title';
 
     <?php include 'components/Footer/footer.php'; ?>
 </body>
+
 </html>

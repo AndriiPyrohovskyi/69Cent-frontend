@@ -1,6 +1,12 @@
 @import '/components/Header/header.css';
 @import '/components/Footer/footer.css';
+@import '/pages/Posts/posts.css';
 @import '/components/Post/post.css';
+@import '/components/PostPreview/post_preview.css';
+@import '/components/PopularAuthors/popular_authors.css';
+@import '/pages/Profile/profile.css';
+@import '/components/CategoryCard/category_card.css';
+@import '/components/LikeCard/like_card.css';
 :root { 
     --coffee-dark: #4B2E2B; 
     --cream: #F3E9DC; 
@@ -12,8 +18,19 @@
     --text-dark: #2B2B2B; 
 }
 html, body {
+    height: 100%;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
