@@ -7,6 +7,7 @@
 @import '/pages/Profile/profile.css';
 @import '/components/CategoryCard/category_card.css';
 @import '/components/LikeCard/like_card.css';
+@import '/components/ProfileCard/profile_card.css';
 :root { 
     --coffee-dark: #4B2E2B; 
     --cream: #F3E9DC; 

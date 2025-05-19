@@ -66,3 +66,16 @@
 .edit-button:hover {
     background-color: var(--deep-green);
 }
+.delete-button {
+    padding: 10px 16px;
+    background-color: var(--berry);
+    color: rgb(101, 0, 0);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.delete-button:hover {
+    background-color: var(--deep-green);
+}

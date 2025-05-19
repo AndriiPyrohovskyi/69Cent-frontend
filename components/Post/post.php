@@ -23,16 +23,17 @@
                 <span class="post-category"> <?= $post_data['post_category'] ?> </span>
             </div>
             <h4 class="post-created_at">Створено: <?= $post_data['post_created_at'] ?> </h4>
-            <?php if($post_data['is_modified']==true): ?>
+            <?php if ($post_data['is_modified']): ?>
                 <h4 class="post-modified_at">Модифіковано: <?= $post_data['post_modified_at'] ?> </h4>
             <?php endif; ?>
         </div>
-        <div class="post-likes">
-            <?php foreach ($post_data['post_likes'] as $like_type => $like_count): ?>
-                <button class="like-button">
-                    <img class="like_icon" src="<?= $like_count[1]?>"></img> <?= $like_count[0] ?>
-                </button>
-            <?php endforeach; ?>
+        <div class="post-actions">
+            <?php if ($current_user['id'] === $post_data['author_id'] || $current_user['role'] === 'admin'): ?>
+                <button class="delete-post-btn" data-post-id="<?= $post_data['id'] ?>">Видалити</button>
+            <?php endif; ?>
+            <?php if ($current_user['id'] === $post_data['author_id']): ?>
+                <button class="edit-post-btn" data-post-id="<?= $post_data['id'] ?>">Редагувати</button>
+            <?php endif; ?>
         </div>
     </div>
 </div>

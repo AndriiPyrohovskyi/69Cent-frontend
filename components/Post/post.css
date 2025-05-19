@@ -142,6 +142,39 @@
     height: 20px;
     margin-right: 4px;
 }
+.post-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.delete-post-btn,
+.edit-post-btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.delete-post-btn {
+    background-color: var(--berry);
+    color: white;
+}
+
+.delete-post-btn:hover {
+    background-color: var(--deep-green);
+}
+
+.edit-post-btn {
+    background-color: var(--tea-green);
+    color: white;
+}
+
+.edit-post-btn:hover {
+    background-color: var(--caramel);
+}
 
 @media (max-width: 768px) {
     .post-author-container {

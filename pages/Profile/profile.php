@@ -1,7 +1,7 @@
 <?php
 $title = "Profile Page";
 ob_start();
-$my_user = [
+$current_user = [
     'id' => 1,
     'username' => 'coffee_lover',
     'email' => 'coffee@example.com',
@@ -11,10 +11,10 @@ $my_user = [
 ];
 $users_admin = [
     [
-        'id' => 1,
+        'id' => 2,
         'username' => 'coffee_lover',
         'email' => 'coffee@example.com',
-        'role' => 'admin',
+        'role' => 'user',
         'avatar_url' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
         'created_at' => '2024-10-15 12:30:00'
     ],
@@ -38,6 +38,7 @@ $users_admin = [
 $posts = [
     [
         'author_avatar' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
+        'author_id' => 1,
         'author_name' => 'Ivan Zolo',
         'author_date' => '2023-10-01',
         'author_role' => 'Admin',
@@ -59,6 +60,7 @@ $posts = [
     ],
     [
         'author_avatar' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
+        'author_id' => 1,
         'author_name' => 'Ivan Zolo',
         'author_date' => '2023-10-01',
         'author_role' => 'Admin',
@@ -82,6 +84,7 @@ $posts = [
 $admin_posts = [
     [
         'author_avatar' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
+        'author_id' => 1,
         'author_name' => 'Ivan Zolo',
         'author_date' => '2023-10-01',
         'author_role' => 'Admin',
@@ -103,6 +106,7 @@ $admin_posts = [
     ],
     [
         'author_avatar' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
+        'author_id' => 2,
         'author_name' => 'Ivan Zolo',
         'author_date' => '2023-10-01',
         'author_role' => 'Admin',
@@ -124,6 +128,7 @@ $admin_posts = [
     ],
     [
         'author_avatar' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
+        'author_id' => 2,
         'author_name' => 'Ivan Zolo',
         'author_date' => '2023-10-01',
         'author_role' => 'Admin',
@@ -174,8 +179,8 @@ $likes_admin = [
 ];
 $isEditing = isset($_POST['edit']);
 if (isset($_POST['save'])) {
-    $my_user['username'] = htmlspecialchars($_POST['username']);
-    $my_user['avatar_url'] = htmlspecialchars($_POST['avatar_url']);
+    $current_user['username'] = htmlspecialchars($_POST['username']);
+    $current_user['avatar_url'] = htmlspecialchars($_POST['avatar_url']);
     $isEditing = false;
 }
 $activeTab = $_GET['tab'] ?? 'profile';
@@ -187,7 +192,7 @@ $adminSubTab = $_GET['subtab'] ?? 'users';
         <ul>
             <li><a href="?tab=profile" class="<?= $activeTab === 'profile' ? 'active' : '' ?>">Профіль</a></li>
             <li><a href="?tab=posts" class="<?= $activeTab === 'posts' ? 'active' : '' ?>">Мої пости</a></li>
-            <?php if ($my_user['role'] === 'admin'): ?>
+            <?php if ($current_user['role'] === 'admin'): ?>
                 <li>
                     <a href="?tab=admin" class="<?= $activeTab === 'admin' ? 'active' : '' ?>">Адмін-панель</a>
                     <?php if ($activeTab === 'admin'): ?>
@@ -204,7 +209,8 @@ $adminSubTab = $_GET['subtab'] ?? 'users';
     <div class="profile-content">
         <?php if ($activeTab === 'profile'): ?>
             <?php
-                $user = $my_user;
+                $profile_user = $current_user;
+                $context = 'profile';
                 include '../../components/ProfileCard/profile_card.php'; 
             ?>
         <?php elseif ($activeTab === 'posts'): ?>
@@ -220,7 +226,8 @@ $adminSubTab = $_GET['subtab'] ?? 'users';
         <?php elseif ($activeTab === 'admin'): ?>
             <div class="admin-panel">
                 <?php if ($adminSubTab === 'users'):
-                    foreach ($users_admin as $user) {
+                    foreach ($users_admin as $profile_user) {
+                        $context = 'admin';
                         include '../../components/ProfileCard/profile_card.php';
                     }
                 ?>
