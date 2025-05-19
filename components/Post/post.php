@@ -1,15 +1,17 @@
 <div class="post">
-        <div class="post-author-container">
-            <div class="post-author-avatar-container">
-                <img src="<?= $post_data['author_avatar'] ?>" alt="Author Avatar" class="post-author-avatar">
+        <a class="author-link" href="/pages/Profile/profile.php?id=<?= $post_data['author_id'] ?>">
+            <div class="post-author-container">
+                <div class="post-author-avatar-container">
+                    <img src="<?= $post_data['author_avatar'] ?>" alt="Author Avatar" class="post-author-avatar">
+                </div>
+                <div class="post-author-info-container">
+                    <h1 class="post-author-name">Автор: <?= $post_data['author_name'] ?></h1>
+                    <h2 class="post-author-date">Дата реєстрації: <?= $post_data['author_date'] ?> </h2>
+                    <h3 class="post-author-role">Роль: <?= $post_data['author_role'] ?></h3>
+                    <h3 class="post-author-carma">Карма: <?= $post_data['author_сarma'] ?></h3>
+                </div>
             </div>
-            <div class="post-author-info-container">
-                <h1 class="post-author-name">Автор: <?= $post_data['author_name'] ?> </h1>
-                <h2 class="post-author-date">Дата реєстрації: <?= $post_data['author_date'] ?> </h2>
-                <h3 class="post-author-role">Роль: <?= $post_data['author_role'] ?></h3>
-                <h3 class="post-author-carma">Карма: <?= $post_data['author_сarma'] ?></h3>
-            </div>
-        </div>
+        </a>
         <div class="post-content-container">
                 <h1 class="post-content-title"> <?= $post_data['post_title'] ?> </h1>
                 <h2 class="post-content-text"> <?= $post_data['post_text'] ?> </h2>

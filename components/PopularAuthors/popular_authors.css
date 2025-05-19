@@ -72,4 +72,6 @@
 .see-more:hover {
     text-decoration: underline;
 }
-
+.author-link {
+    text-decoration: none;
+}

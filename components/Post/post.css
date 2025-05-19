@@ -11,6 +11,13 @@
     width: 100%;
     box-sizing: border-box;
 }
+
+.author-link {
+    text-decoration: none;
+}
+.post-link {
+    text-decoration: none;
+}
 .post-author-container {
     display: flex;
     flex-wrap: wrap;
@@ -19,6 +26,10 @@
     background-color: var(--tea-green);
     border-radius: 12px;
     padding: 16px;
+}
+.post-author-container:hover {
+    background-color: var(--caramel);
+    transition: background-color 0.3s ease;
 }
 
 .post-author-avatar-container {

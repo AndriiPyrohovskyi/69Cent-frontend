@@ -7,7 +7,8 @@ $current_user = [
     'email' => 'coffee@example.com',
     'role' => 'admin',
     'avatar_url' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-    'created_at' => '2024-10-15 12:30:00'
+    'created_at' => '2024-10-15 12:30:00',
+    'karma' => 100
 ];
 $users_admin = [
     [
@@ -16,7 +17,8 @@ $users_admin = [
         'email' => 'coffee@example.com',
         'role' => 'user',
         'avatar_url' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'created_at' => '2024-10-15 12:30:00'
+        'created_at' => '2024-10-15 12:30:00',
+        'karma' => 100
     ],
     [
         'id' => 1,
@@ -24,7 +26,8 @@ $users_admin = [
         'email' => 'coffee@example.com',
         'role' => 'admin',
         'avatar_url' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'created_at' => '2024-10-15 12:30:00'
+        'created_at' => '2024-10-15 12:30:00',
+        'karma' => 100
     ],
     [
         'id' => 1,
@@ -32,7 +35,8 @@ $users_admin = [
         'email' => 'coffee@example.com',
         'role' => 'admin',
         'avatar_url' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'created_at' => '2024-10-15 12:30:00'
+        'created_at' => '2024-10-15 12:30:00',
+        'karma' => 100
     ],
 ];
 $posts = [

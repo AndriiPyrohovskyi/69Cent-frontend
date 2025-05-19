@@ -16,6 +16,7 @@
             <p><strong>Email:</strong> <?= htmlspecialchars($profile_user['email']) ?></p>
             <p><strong>Роль:</strong> <?= htmlspecialchars($profile_user['role']) ?></p>
             <p><strong>Зареєстровано:</strong> <?= date('d.m.Y H:i', strtotime($profile_user['created_at'])) ?></p>
+            <p><strong>Карма:</strong> <?= number_format($profile_user['karma'], 0, '.', ' ') ?> карми</p>
             <div class="form-actions">
                 <?php if ($current_user['id'] === $profile_user['id']): ?>
                     <button type="submit" name="<?= $isEditing ? 'save' : 'edit' ?>" class="edit-button">
