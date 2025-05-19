@@ -1,5 +1,5 @@
 <div class="post">
-        <a class="author-link" href="/pages/Profile/profile.php?id=<?= $post_data['author_id'] ?>">
+        <a class="author-link" href="/pages/ProfileView/profile_view.php?id=<?= $post_data['author_id'] ?>">
             <div class="post-author-container">
                 <div class="post-author-avatar-container">
                     <img src="<?= $post_data['author_avatar'] ?>" alt="Author Avatar" class="post-author-avatar">

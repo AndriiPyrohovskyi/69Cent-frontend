@@ -1,7 +1,7 @@
 <?php include_once __DIR__ . '/../../helpers.php'; ?>
 
 <div class="post-preview">
-    <a class="author-link" href="/pages/Profile/profile.php?id=<?= $post_data['author_id'] ?>">
+    <a class="author-link" href="/pages/ProfileView/profile_view.php?id=<?= $post_data['author_id'] ?>">
         <div class="preview-header">
             <img src="<?= $post_data['author_avatar'] ?>" alt="Author Avatar" class="preview-avatar">
             <span class="preview-time"><?= htmlspecialchars(getRelativeTime($post_data['post_created_at'])) ?></span>

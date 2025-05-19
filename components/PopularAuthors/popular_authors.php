@@ -2,7 +2,7 @@
     <ul class="author-list">
         <?php foreach ($popular_authors as $author): ?>
             <li class="author-item">
-                <a class="author-link" href="/pages/Profile/profile.php?id=<?= $author['id'] ?>">
+                <a class="author-link" href="/pages/ProfileView/profile_view.php?id=<?= $post_data['author_id'] ?>">
                     <img src="<?= $author['avatar_url'] ?>" class="author-avatar" alt="avatar">
                     <div class="author-info">
                         <span class="author-name">@<?= $author['username'] ?></span>
