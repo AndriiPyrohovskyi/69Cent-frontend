@@ -25,6 +25,7 @@ ob_start();
         </p>
     </div>
 </div>
+<script src="/pages/Register/register.js"></script>
 <?php
 $content = ob_get_clean();
 include '../../layout.php';

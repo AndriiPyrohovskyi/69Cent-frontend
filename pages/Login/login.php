@@ -1,12 +1,15 @@
 <?php
 $title = "Login Page";
+session_start();
 ob_start();
+
+$error_message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $api_url = 'http://69cent.local/api/login';
+    $api_url = 'http://69centapi.local/api/login';
     $data = [
         'username' => $username,
         'password' => $password
@@ -24,9 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($http_code === 200) {
         $response_data = json_decode($response, true);
-        session_start();
         $_SESSION['authToken'] = $response_data['token'];
-        header('Location: /');
+        echo "<script>
+            localStorage.setItem('authToken', '{$response_data['token']}');
+            window.location.href = '/index.php';
+        </script>";
         exit;
     } else {
         $error_message = 'Помилка входу. Перевірте дані та спробуйте ще раз.';
@@ -40,6 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="auth-container">
     <div class="auth-form">
         <h1 class="auth-title">Вхід</h1>
+        <?php if (!empty($error_message)): ?>
+            <p class="error-message"><?= htmlspecialchars($error_message) ?></p>
+        <?php endif; ?>
         <form action="/pages/Login/login.php" method="POST">
             <div class="input-group">
                 <input type="text" name="username" id="username" required>
@@ -56,6 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </p>
     </div>
 </div>
+
+<?php if (!empty($_SESSION['authToken'])): ?>
+    <div id="php-auth-token" data-token="<?= $_SESSION['authToken'] ?>" style="display: none;"></div>
+<?php endif; ?>
+
 <?php
 $content = ob_get_clean();
 include '../../layout.php';

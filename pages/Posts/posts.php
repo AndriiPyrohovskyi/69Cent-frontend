@@ -107,6 +107,10 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
     exit;
 }
 ?>
+<?php
+session_start();
+$is_authenticated = isset($_SESSION['authToken']);
+?>
 <div class="filter-bar">
     <form method="GET" id="filter-form">
         <input type="text" name="search" class="search-input" placeholder="Пошук постів..." value="<?= htmlspecialchars($search_query) ?>">
@@ -120,7 +124,15 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
         </select>
     </form>
 </div>
-<a href="/pages/CreatePost/create_post.php" class="create-post-btn">+ Створити пост</a>
+
+<?php if ($is_authenticated): ?>
+    <a href="/pages/CreatePost/create_post.php" class="create-post-btn">+ Створити пост</a>
+<?php else: ?>
+    <p class="auth-warning">
+        <a href="/pages/Login/login.php">Увійдіть</a>, щоб створити пост.
+    </p>
+<?php endif; ?>
+
 <div class="posts">
     <div class="posts-container">
         <?php

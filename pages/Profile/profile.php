@@ -247,15 +247,23 @@ $adminSubTab = $_GET['subtab'] ?? 'users';
                             <?php foreach ($categories_admin as $category): ?>
                                 <?php include '../../components/CategoryCard/category_card.php'; ?>
                             <?php endforeach; ?>
-                            <button class="add-category-btn">+ Додати категорію</button>
                         </div>
+                        <form id="add-category-form" class="add-form">
+                            <input type="text" id="new-category-name" placeholder="Назва нової категорії" required>
+                            <button type="submit" class="add-category-btn">+ Додати категорію</button>
+                        </form>
+
                         <h2>Лайки</h2>
                         <div class="likes-container">
                             <?php foreach ($likes_admin as $like): ?>
                                 <?php include '../../components/LikeCard/like_card.php'; ?>
                             <?php endforeach; ?>
-                            <button class="add-like-btn">+ Додати лайк</button>
                         </div>
+                        <form id="add-like-form" class="add-form">
+                            <input type="text" id="new-like-name" placeholder="Назва нового лайка" required>
+                            <input type="number" id="new-like-carma" placeholder="Карма" required>
+                            <button type="submit" class="add-like-btn">+ Додати лайк</button>
+                        </form>
                     </div>
                 <?php endif; ?>
             </div>

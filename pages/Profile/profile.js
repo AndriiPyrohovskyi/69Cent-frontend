@@ -1,21 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Додавання категорії
-    document.querySelector('.add-category-btn').addEventListener('click', () => {
-        const categoryName = prompt('Введіть назву нової категорії:');
+    // Додавання категорії через форму
+    document.querySelector('#add-category-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const categoryName = document.querySelector('#new-category-name').value.trim();
         if (categoryName) {
             alert(`Категорія "${categoryName}" додана!`);
             // Тут можна зробити AJAX-запит для збереження на сервері
+            document.querySelector('#new-category-name').value = ''; // Очистити поле
         }
     });
-    // Додавання лайка
-    document.querySelector('.add-like-btn').addEventListener('click', () => {
-        const likeName = prompt('Введіть назву нового лайка:');
-        const likeCarma = prompt('Введіть карму для лайка:');
+
+    // Додавання лайка через форму
+    document.querySelector('#add-like-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const likeName = document.querySelector('#new-like-name').value.trim();
+        const likeCarma = document.querySelector('#new-like-carma').value.trim();
         if (likeName && likeCarma) {
             alert(`Лайк "${likeName}" з кармою ${likeCarma} додано!`);
             // Тут можна зробити AJAX-запит для збереження на сервері
+            document.querySelector('#new-like-name').value = ''; // Очистити поле
+            document.querySelector('#new-like-carma').value = ''; // Очистити поле
         }
     });
+
     // Редагування категорії
     document.querySelectorAll('.edit-category-btn').forEach(button => {
         button.addEventListener('click', () => {

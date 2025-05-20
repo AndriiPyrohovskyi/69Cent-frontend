@@ -1,5 +1,6 @@
 <?php
 $title = $title ?? 'Default Title';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,5 +22,5 @@ $title = $title ?? 'Default Title';
 
     <?php include 'components/Footer/footer.php'; ?>
 </body>
-
+<script src="/pages/Login/login.js"></script>
 </html>
