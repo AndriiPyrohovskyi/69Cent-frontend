@@ -244,9 +244,6 @@ $adminSubTab = $_GET['subtab'] ?? 'users';
                     <div class="settings-section">
                         <h2>Категорії</h2>
                         <div class="categories-container">
-                            <?php foreach ($categories_admin as $category): ?>
-                                <?php include '../../components/CategoryCard/category_card.php'; ?>
-                            <?php endforeach; ?>
                         </div>
                         <form id="add-category-form" class="add-form">
                             <input type="text" id="new-category-name" placeholder="Назва нової категорії" required>
@@ -255,13 +252,11 @@ $adminSubTab = $_GET['subtab'] ?? 'users';
 
                         <h2>Лайки</h2>
                         <div class="likes-container">
-                            <?php foreach ($likes_admin as $like): ?>
-                                <?php include '../../components/LikeCard/like_card.php'; ?>
-                            <?php endforeach; ?>
                         </div>
                         <form id="add-like-form" class="add-form">
                             <input type="text" id="new-like-name" placeholder="Назва нового лайка" required>
                             <input type="number" id="new-like-carma" placeholder="Карма" required>
+                            <input type="text" id="new-like-icon-url" placeholder="Посилання на іконку" required>
                             <button type="submit" class="add-like-btn">+ Додати лайк</button>
                         </form>
                     </div>
