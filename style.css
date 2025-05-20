@@ -9,6 +9,7 @@
 @import '/components/LikeCard/like_card.css';
 @import '/components/ProfileCard/profile_card.css';
 @import '/pages/CreatePost/create_post.css';
+@import '/pages/Login/login.css';
 :root { 
     --coffee-dark: #4B2E2B; 
     --cream: #F3E9DC; 

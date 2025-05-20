@@ -6,7 +6,7 @@
                     <img src="<?= $author['avatar_url'] ?>" class="author-avatar" alt="avatar">
                     <div class="author-info">
                         <span class="author-name">@<?= $author['username'] ?></span>
-                        <span class="author-karma"><?= number_format($author['karma'], 0, '.', ' ') ?> карми</spa>
+                        <span class="author-karma"><?= number_format($author['karma'], 0, '.', ' ') ?> карми</span>
                     </div>
                 </a>
             </li>
