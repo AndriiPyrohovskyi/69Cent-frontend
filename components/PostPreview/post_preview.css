@@ -80,3 +80,19 @@
     font-weight: bold;
     text-transform: uppercase;
 }
+
+.like-button.liked {
+    background-color: #e3f2fd;
+    border-color: #2196f3;
+    box-shadow: 0 0 3px rgba(33, 150, 243, 0.5);
+}
+
+.like-button.liked .like-icon {
+    filter: drop-shadow(0 0 2px #2196f3);
+}
+
+.all-likes-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}

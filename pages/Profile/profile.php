@@ -1,194 +1,24 @@
 <?php
+session_start();
+
 $title = "Profile Page";
 ob_start();
-$current_user = [
-    'id' => 1,
-    'username' => 'coffee_lover',
-    'email' => 'coffee@example.com',
-    'role' => 'admin',
-    'avatar_url' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-    'created_at' => '2024-10-15 12:30:00',
-    'karma' => 100
-];
-$users_admin = [
-    [
-        'id' => 2,
-        'username' => 'coffee_lover',
-        'email' => 'coffee@example.com',
-        'role' => 'user',
-        'avatar_url' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'created_at' => '2024-10-15 12:30:00',
-        'karma' => 100
-    ],
-    [
-        'id' => 1,
-        'username' => 'coffee_lover',
-        'email' => 'coffee@example.com',
-        'role' => 'admin',
-        'avatar_url' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'created_at' => '2024-10-15 12:30:00',
-        'karma' => 100
-    ],
-    [
-        'id' => 1,
-        'username' => 'coffee_lover',
-        'email' => 'coffee@example.com',
-        'role' => 'admin',
-        'avatar_url' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'created_at' => '2024-10-15 12:30:00',
-        'karma' => 100
-    ],
-];
-$posts = [
-    [
-        'author_avatar' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'author_id' => 1,
-        'author_name' => 'Ivan Zolo',
-        'author_date' => '2023-10-01',
-        'author_role' => 'Admin',
-        'author_сarma' => 100,
-        'post_title' => 'Екатіріна Зізуліна',
-        'post_text' => 'Екатіріна Зізуліна Екатіріна Зізуліна Екатіріна Зізуліна Екатіріна Зізуліна',
-        'post_image' => 'https://images.next.thetruestory.news/thumb/92/c8/newsitem_3548925.webp',
-        'post_category' => 'Плітки',
-        'post_created_at' => '2023-10-01 12:00:00',
-        'is_modified' => true,
-        'post_modified_at' => '2023-10-02 12:00:00',
-        'post_likes' => [
-            'like' => [10, 'https://www.svgrepo.com/show/505406/like.svg'],
-            'dislike' => [2, 'https://www.svgrepo.com/show/505358/dislike.svg'],
-            'love' => [2, 'https://www.svgrepo.com/show/13666/heart.svg'],
-            'funny' => [2, 'https://www.svgrepo.com/show/352802/laugh-squint.svg'],
-            'angry' => [2, 'https://www.svgrepo.com/show/458500/angry.svg'],
-        ],
-    ],
-    [
-        'author_avatar' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'author_id' => 1,
-        'author_name' => 'Ivan Zolo',
-        'author_date' => '2023-10-01',
-        'author_role' => 'Admin',
-        'author_сarma' => 100,
-        'post_title' => 'Екатіріна Зізуліна',
-        'post_text' => 'Екатіріна Зізуліна Екатіріна Зізуліна Екатіріна Зізуліна Екатіріна Зізуліна',
-        'post_image' => 'https://images.next.thetruestory.news/thumb/92/c8/newsitem_3548925.webp',
-        'post_category' => 'Плітки',
-        'post_created_at' => '2023-10-01 12:00:00',
-        'is_modified' => true,
-        'post_modified_at' => '2023-10-02 12:00:00',
-        'post_likes' => [
-            'like' => [10, 'https://www.svgrepo.com/show/505406/like.svg'],
-            'dislike' => [2, 'https://www.svgrepo.com/show/505358/dislike.svg'],
-            'love' => [2, 'https://www.svgrepo.com/show/13666/heart.svg'],
-            'funny' => [2, 'https://www.svgrepo.com/show/352802/laugh-squint.svg'],
-            'angry' => [2, 'https://www.svgrepo.com/show/458500/angry.svg'],
-        ],
-    ],
-];
-$admin_posts = [
-    [
-        'author_avatar' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'author_id' => 1,
-        'author_name' => 'Ivan Zolo',
-        'author_date' => '2023-10-01',
-        'author_role' => 'Admin',
-        'author_сarma' => 100,
-        'post_title' => 'Екатіріна Зізуліна',
-        'post_text' => 'Екатіріна Зізуліна Екатіріна Зізуліна Екатіріна Зізуліна Екатіріна Зізуліна',
-        'post_image' => 'https://images.next.thetruestory.news/thumb/92/c8/newsitem_3548925.webp',
-        'post_category' => 'Плітки',
-        'post_created_at' => '2023-10-01 12:00:00',
-        'is_modified' => true,
-        'post_modified_at' => '2023-10-02 12:00:00',
-        'post_likes' => [
-            'like' => [10, 'https://www.svgrepo.com/show/505406/like.svg'],
-            'dislike' => [2, 'https://www.svgrepo.com/show/505358/dislike.svg'],
-            'love' => [2, 'https://www.svgrepo.com/show/13666/heart.svg'],
-            'funny' => [2, 'https://www.svgrepo.com/show/352802/laugh-squint.svg'],
-            'angry' => [2, 'https://www.svgrepo.com/show/458500/angry.svg'],
-        ],
-    ],
-    [
-        'author_avatar' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'author_id' => 2,
-        'author_name' => 'Ivan Zolo',
-        'author_date' => '2023-10-01',
-        'author_role' => 'Admin',
-        'author_сarma' => 100,
-        'post_title' => 'Екатіріна Зізуліна',
-        'post_text' => 'Екатіріна Зізуліна Екатіріна Зізуліна Екатіріна Зізуліна Екатіріна Зізуліна',
-        'post_image' => 'https://images.next.thetruestory.news/thumb/92/c8/newsitem_3548925.webp',
-        'post_category' => 'Плітки',
-        'post_created_at' => '2023-10-01 12:00:00',
-        'is_modified' => true,
-        'post_modified_at' => '2023-10-02 12:00:00',
-        'post_likes' => [
-            'like' => [10, 'https://www.svgrepo.com/show/505406/like.svg'],
-            'dislike' => [2, 'https://www.svgrepo.com/show/505358/dislike.svg'],
-            'love' => [2, 'https://www.svgrepo.com/show/13666/heart.svg'],
-            'funny' => [2, 'https://www.svgrepo.com/show/352802/laugh-squint.svg'],
-            'angry' => [2, 'https://www.svgrepo.com/show/458500/angry.svg'],
-        ],
-    ],
-    [
-        'author_avatar' => 'https://uznayvse.ru/images/catalog/2022/3/ivan-zolo_0.jpg',
-        'author_id' => 2,
-        'author_name' => 'Ivan Zolo',
-        'author_date' => '2023-10-01',
-        'author_role' => 'Admin',
-        'author_сarma' => 100,
-        'post_title' => 'Екатіріна Зізуліна',
-        'post_text' => 'Екатіріна Зізуліна Екатіріна Зізуліна Екатіріна Зізуліна Екатіріна Зізуліна',
-        'post_image' => 'https://images.next.thetruestory.news/thumb/92/c8/newsitem_3548925.webp',
-        'post_category' => 'Плітки',
-        'post_created_at' => '2023-10-01 12:00:00',
-        'is_modified' => true,
-        'post_modified_at' => '2023-10-02 12:00:00',
-        'post_likes' => [
-            'like' => [10, 'https://www.svgrepo.com/show/505406/like.svg'],
-            'dislike' => [2, 'https://www.svgrepo.com/show/505358/dislike.svg'],
-            'love' => [2, 'https://www.svgrepo.com/show/13666/heart.svg'],
-            'funny' => [2, 'https://www.svgrepo.com/show/352802/laugh-squint.svg'],
-            'angry' => [2, 'https://www.svgrepo.com/show/458500/angry.svg'],
-        ],
-    ],
-];
-$categories_admin = ['Плітки', 'Спорт', 'Політика', 'Технології', 'Наука', 'Мистецтво'];
-$likes_admin = [
-    [
-        'name' => 'Like',
-        'carma' => 1,
-        'icon_url' => 'https://www.svgrepo.com/show/505406/like.svg',
-    ],
-    [
-        'name' => 'Dislike',
-        'carma' => -1,
-        'icon_url' => 'https://www.svgrepo.com/show/505358/dislike.svg',
-    ],
-    [
-        'name' => 'Love',
-        'carma' => 2,
-        'icon_url' => 'https://www.svgrepo.com/show/13666/heart.svg',
-    ],
-    [
-        'name' => 'Funny',
-        'carma' => 2,
-        'icon_url' => 'https://www.svgrepo.com/show/352802/laugh-squint.svg',
-    ],
-    [
-        'name' => 'Angry',
-        'carma' => -2,
-        'icon_url' => 'https://www.svgrepo.com/show/458500/angry.svg',
-    ],
-];
 $isEditing = isset($_POST['edit']);
-if (isset($_POST['save'])) {
-    $current_user['username'] = htmlspecialchars($_POST['username']);
-    $current_user['avatar_url'] = htmlspecialchars($_POST['avatar_url']);
-    $isEditing = false;
-}
+
 $activeTab = $_GET['tab'] ?? 'profile';
 $adminSubTab = $_GET['subtab'] ?? 'users';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $input = json_decode(file_get_contents('php://input'), true);
+    if (isset($input['currentUser'])) {
+        $_SESSION['current_user'] = $input['currentUser'];
+        $current_user = $input['currentUser'];
+    }
+}
+if (!isset($current_user) && isset($_SESSION['current_user'])) {
+    $current_user = $_SESSION['current_user'];
+}
+error_log('Current User: ' . print_r($current_user, true));
 ?>
 <div class="profile-page">
     <aside class="sidebar">
@@ -196,7 +26,7 @@ $adminSubTab = $_GET['subtab'] ?? 'users';
         <ul>
             <li><a href="?tab=profile" class="<?= $activeTab === 'profile' ? 'active' : '' ?>">Профіль</a></li>
             <li><a href="?tab=posts" class="<?= $activeTab === 'posts' ? 'active' : '' ?>">Мої пости</a></li>
-            <?php if ($current_user['role'] === 'admin'): ?>
+            <?php if (isset($current_user) && isset($current_user['role']) && $current_user['role'] === 'admin'): ?>
                 <li>
                     <a href="?tab=admin" class="<?= $activeTab === 'admin' ? 'active' : '' ?>">Адмін-панель</a>
                     <?php if ($activeTab === 'admin'): ?>
@@ -212,34 +42,15 @@ $adminSubTab = $_GET['subtab'] ?? 'users';
     </aside>
     <div class="profile-content">
         <?php if ($activeTab === 'profile'): ?>
-            <?php
-                $profile_user = $current_user;
-                $context = 'profile';
-                include '../../components/ProfileCard/profile_card.php'; 
-            ?>
+            <div id="profile-card-container"></div>
         <?php elseif ($activeTab === 'posts'): ?>
-            <div class="posts-section">
-                <div class="posts-container">
-                    <?php
-                    foreach ($posts as $post_data) {
-                        include '../../components/PostPreview/post_preview.php';
-                    }
-                    ?>
-                </div>
-            </div>
+            <div id="posts-container"></div>
         <?php elseif ($activeTab === 'admin'): ?>
             <div class="admin-panel">
-                <?php if ($adminSubTab === 'users'):
-                    foreach ($users_admin as $profile_user) {
-                        $context = 'admin';
-                        include '../../components/ProfileCard/profile_card.php';
-                    }
-                ?>
-                <?php elseif ($adminSubTab === 'posts'): 
-                    foreach ($admin_posts as $post_data) {
-                        include '../../components/PostPreview/post_preview.php';
-                    }
-                ?>
+                <?php if ($adminSubTab === 'users'):?>
+                    <div id="profile-card-admin-container"></div>
+                <?php elseif ($adminSubTab === 'posts'): ?>
+                    <div id="posts-card-admin-container"></div>
                 <?php elseif ($adminSubTab === 'settings'): ?>
                     <div class="settings-section">
                         <h2>Категорії</h2>

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const phpTokenElement = document.getElementById('php-auth-token');
     if (phpTokenElement) {
         const phpToken = phpTokenElement.dataset.token;
-        if (phpToken && !localStorage.getItem('authToken')) { // Перевіряємо, чи токен вже є в localStorage
+        if (phpToken && !localStorage.getItem('authToken')) { 
             localStorage.setItem('authToken', phpToken);
             console.log('Токен з PHP збережено:', phpToken);
         }
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     getCurrentUser();
     maybeRefreshToken();
-    setInterval(maybeRefreshToken, 60 * 1000); // перевіряти щохвилини
+    setInterval(maybeRefreshToken, 60 * 1000);
 
     const logoutLink = document.getElementById('logout-link');
     const loginLink = document.getElementById('login-link');

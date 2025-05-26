@@ -40,7 +40,7 @@ $categories = ['Технології', 'Кіно', 'Книги', 'Меми', 'Н
         <button type="submit" class="submit-btn">Створити пост</button>
     </form>
 </div>
-
+<script src="create_post.js"></script>
 <?php
 $content = ob_get_clean();
 include '../../layout.php';
