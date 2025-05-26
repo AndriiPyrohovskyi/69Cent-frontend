@@ -244,6 +244,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
             </div>
         `;
+        
+        // Додайте цей рядок в кінці функції
+        addUserActionEventListeners();
     }
     
     function renderPosts(posts, containerSelector) {
@@ -469,8 +472,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
     
-    // Функції для додавання обробників подій
+    // Функції для додавання обробників подійs
     function addUserActionEventListeners() {
+        console.log('Додаємо обробники подій для користувачів');
         // Обробник для кнопки "Редагувати"
         document.querySelectorAll('.edit-user-btn').forEach(button => {
             button.addEventListener('click', () => {

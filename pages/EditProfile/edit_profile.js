@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const editProfileForm = document.getElementById('editProfileForm');
     const statusMessage = document.getElementById('statusMessage');
     
+    // Отримуємо ID користувача з URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('id');
+    
     // Отримуємо токен авторизації
     const authToken = localStorage.getItem('authToken');
     if (!authToken) {
@@ -9,23 +13,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
     
-    // Отримуємо ID користувача з URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('id');
-    
     // Отримуємо поточного користувача
     let currentUser;
     try {
-        // Спочатку перевіряємо, чи є у нас достатні права доступу
         const currentUserResponse = await fetch('http://69centapi.local/api/current_user', {
             headers: { 'Authorization': `Bearer ${authToken}` }
         });
         
         if (currentUserResponse.ok) {
             currentUser = await currentUserResponse.json();
+            console.log('Current user data:', currentUser);
             
-            // Перевіряємо права доступу: користувач може редагувати тільки свій профіль,
-            // або адміністратор може редагувати будь-який профіль
+            // Перевіряємо права доступу
             if (currentUser.id != userId && currentUser.role !== 'admin') {
                 showMessage('У вас немає прав на редагування цього профілю', 'error');
                 setTimeout(() => {
@@ -35,31 +34,33 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             
             // Завантажуємо дані користувача для редагування
-            const userResponse = await fetch(`http://69centapi.local/api/users/${userId}`, {
+            const response = await fetch(`http://69centapi.local/api/users/${userId}`, {
                 headers: { 'Authorization': `Bearer ${authToken}` }
             });
             
-            if (userResponse.ok) {
-                const userData = await userResponse.json();
+            if (response.ok) {
+                const user = await response.json();
+                console.log('User data to edit:', user);
                 
                 // Заповнюємо форму даними користувача
-                document.getElementById('username').value = userData.username || '';
-                document.getElementById('email').value = userData.email || '';
-                document.getElementById('avatar_url').value = userData.avatar_url || '';
+                document.getElementById('username').value = user.username || '';
+                document.getElementById('email').value = user.email || '';
+                document.getElementById('avatar_url').value = user.avatar_url || '';
             } else {
                 throw new Error('Failed to get user data');
             }
         } else {
-            throw new Error('Failed to get current user');
+            throw new Error('Failed to authenticate');
         }
     } catch (err) {
-        console.error('Error loading user data:', err);
-        showMessage('Не вдалося завантажити дані профілю. Спробуйте оновити сторінку.', 'error');
+        console.error('Error:', err);
+        showMessage('Не вдалося завантажити дані профілю', 'error');
     }
     
     // Обробка відправки форми
     editProfileForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        console.log('Form submitted');
         
         // Отримуємо значення полів форми
         const username = document.getElementById('username').value;
@@ -71,24 +72,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // Базова валідація
         if (!username || !email) {
-            showMessage('Ім\'я користувача та email є обов\'язковими полями.', 'error');
+            showMessage('Ім\'я користувача та email є обов\'язковими полями', 'error');
             return;
         }
         
-        // Перевірка паролів, якщо вони заповнені
+        // Перевірка паролів
         if (newPassword) {
             if (!currentPassword) {
-                showMessage('Введіть поточний пароль для його зміни.', 'error');
+                showMessage('Введіть поточний пароль для його зміни', 'error');
                 return;
             }
             
             if (newPassword !== confirmPassword) {
-                showMessage('Новий пароль та підтвердження не співпадають.', 'error');
-                return;
-            }
-            
-            if (newPassword.length < 6) {
-                showMessage('Новий пароль повинен містити не менше 6 символів.', 'error');
+                showMessage('Новий пароль та підтвердження не співпадають', 'error');
                 return;
             }
         }
@@ -106,6 +102,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             userData.new_password = newPassword;
         }
         
+        console.log('Sending data:', userData);
+        
         try {
             // Відправка запиту на оновлення даних користувача
             const response = await fetch(`http://69centapi.local/api/users/${userId}`, {
@@ -117,18 +115,20 @@ document.addEventListener('DOMContentLoaded', async () => {
                 body: JSON.stringify(userData)
             });
             
+            console.log('Response status:', response.status);
+            
             if (response.ok) {
-                // Отримуємо оновлені дані користувача
                 const updatedUser = await response.json();
+                console.log('Updated user:', updatedUser);
                 
-                // Оновлюємо дані користувача в localStorage
+                // Оновлюємо дані в localStorage, якщо це поточний користувач
                 if (userId == currentUser.id) {
                     localStorage.setItem('currentUser', JSON.stringify(updatedUser));
                 }
                 
                 showMessage('Профіль успішно оновлено!', 'success');
                 
-                // Перенаправлення на сторінку профілю після паузи
+                // Перенаправлення на сторінку профілю
                 setTimeout(() => {
                     window.location.href = '/pages/Profile/profile.php?tab=profile';
                 }, 1500);
@@ -137,8 +137,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 showMessage(`Помилка: ${errorData.error || 'Не вдалося оновити профіль'}`, 'error');
             }
         } catch (err) {
-            console.error('Error updating profile:', err);
-            showMessage('Помилка мережі. Спробуйте пізніше.', 'error');
+            console.error('Error during profile update:', err);
+            showMessage('Помилка мережі при оновленні профілю', 'error');
         }
     });
     
