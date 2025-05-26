@@ -1,4 +1,28 @@
 .posts {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar {
+    position: sticky;
+    top: 20px;
+}
+
+@media (max-width: 768px) {
+    .posts {
+        grid-template-columns: 1fr;
+    }
+}
+
+.posts {
     display: flex;
     flex-direction: row;
     justify-content: center;

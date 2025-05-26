@@ -473,14 +473,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     function addUserActionEventListeners() {
         // Обробник для кнопки "Редагувати"
         document.querySelectorAll('.edit-user-btn').forEach(button => {
-            button.addEventListener('click', async () => {
+            button.addEventListener('click', () => {
                 const userId = button.dataset.userId;
-                alert(`Редагування користувача з ID: ${userId}`);
-                // Тут можна відкрити модальне вікно для редагування
+                // Замінюємо алерт на перехід на сторінку редагування
+                window.location.href = `/pages/EditProfile/edit_profile.php?id=${userId}`;
             });
         });
         
-        // Обробник для кнопки "Видалити"
+        // Існуючий обробник для кнопки "Видалити" залишається незмінним
         document.querySelectorAll('.delete-user-btn').forEach(button => {
             button.addEventListener('click', async () => {
                 const userId = button.dataset.userId;
